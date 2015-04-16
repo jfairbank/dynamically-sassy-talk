@@ -136,6 +136,7 @@ body {
   font-family: monospace; }
 
 .reveal pre code {
+  border-radius: 4px;
   display: block;
   padding: 5px;
   overflow: auto;

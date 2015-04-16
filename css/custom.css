@@ -1,0 +1,18 @@
+.reveal .worker {
+  background: #0f0;
+  height: 50px;
+  position: absolute;
+  top: -200px;
+  width: 50px; }
+
+.worker1 {
+  left: 100px; }
+
+.worker2 {
+  left: 180px; }
+
+.worker3 {
+  left: 260px; }
+
+.worker4 {
+  left: 340px; }

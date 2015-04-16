@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/night-revised.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/solarized_dark.css">
@@ -42,7 +43,7 @@
       <div class="slides">
         <section>
           <h2>Dynamically Sassy</h2>
-          <h3>Generating Dynamic Sass and CSS in Rails</h3>
+          <h3>Generating Dynamic CSS in Rails</h3>
           <h4>
             <a href="http://blog.jeremyfairbank.com">Jeremy Fairbank</a>
           </h4>
@@ -67,7 +68,7 @@
             </p>
         </section>
 
-        <section data-background="#27252A" data-background-transition="slide">
+        <section data-background="#27252A">
           <img src="/img/simplybuilt.png" width="400">
           <br>
           <img src="/img/simplybuilt-editor-2.jpg" height="400">
@@ -77,9 +78,20 @@
           </strong>
         </section>
 
-        <section data-background="#fafafa" data-background-transition="slide">
+        <section data-background="#fafafa">
           <h2 style="color: #555;">Our Problem</h2>
           <img src="/img/color-palettes.jpg">
+        </section>
+
+        <section>
+          <h1>Issues</h1>
+          <ol>
+            <li>Same Sass style sheet to render default and custom colors</li>
+            <li>Rendering custom color style sheets from a controller</li>
+            <li>Slow HTTP requests</li>
+            <li>Caching custom style sheets</li>
+            <li>Background processing</li>
+          </ol>
         </section>
 
         <section>
@@ -88,7 +100,10 @@
         </section>
 
         <section>
-          <h2>Sass In Action</h2>
+          <h2>
+            <img height="100" src="/img/sass.png" style="vertical-align: middle;">
+            <span style="vertical-align: middle;">in Action</span>
+          </h2>
           <pre><code class="scss">
     // Variables
     $font-size: 12px;
@@ -96,7 +111,7 @@
     // Nested rules
     #foo {
       .bar {
-        font-size: 12px;
+        font-size: $font-size;
       }
     }
           </code></pre>
@@ -118,323 +133,459 @@
 
         <section>
           <h1>So What?</h1>
-        </section>
-
-        <!-- Example of nested vertical slides -->
-        <section>
-          <section>
-            <h2>Vertical Slides</h2>
-            <p>Slides can be nested inside of each other.</p>
-            <p>Use the <em>Space</em> key to navigate through all slides.</p>
-            <br>
-            <a href="#" class="navigate-down">
-              <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section>
-            <h2>Basement Level 1</h2>
-            <p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-          </section>
-          <section>
-            <h2>Basement Level 2</h2>
-            <p>That's it, time to go back up.</p>
-            <br>
-            <a href="#/2">
-              <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-            </a>
-          </section>
+          <img width="200" src="/img/sass.png" style="margin-right: 30px; vertical-align: middle;">
+          <ul style="vertical-align: middle;">
+            <li>Modularity</li>
+            <li>DRY</li>
+            <li>Data Structures</li>
+            <li>Color Logic</li>
+          </ul>
         </section>
 
         <section>
-          <h2>Slides</h2>
-          <p>
-            Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-          </p>
-        </section>
+          <h2>Reusing style sheets</h2>
+          <h4>It's all in the variables</h4>
+          <pre><code class="scss">
+    // palette1.scss
+    $palette: (red green);
+    @import 'my-ui';
+          </code></pre>
 
-        <section>
-          <h2>Point of View</h2>
-          <p>
-            Press <strong>ESC</strong> to enter the slide overview.
-          </p>
-          <p>
-            Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-          </p>
-        </section>
+          <pre><code class="scss">
+    // palette2.scss
+    $palette: (blue yellow);
+    @import 'my-ui';
+          </code></pre>
 
-        <section>
-          <h2>Touch Optimized</h2>
-          <p>
-            Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-          </p>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Markdown support
-
-            Write content using inline or external Markdown.
-            Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-            ```
-            <section data-markdown>
-              ## Markdown support
-
-              Write content using inline or external Markdown.
-              Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-            </section>
-            ```
-          </script>
-        </section>
-
-        <section>
-          <section id="fragments">
-            <h2>Fragments</h2>
-            <p>Hit the next arrow...</p>
-            <p class="fragment">... to step through ...</p>
-            <p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-            <aside class="notes">
-              This slide has fragments which are also stepped through in the notes window.
-            </aside>
-          </section>
-          <section>
-            <h2>Fragment Styles</h2>
-            <p>There's different types of fragments, like:</p>
-            <p class="fragment grow">grow</p>
-            <p class="fragment shrink">shrink</p>
-            <p class="fragment roll-in">roll-in</p>
-            <p class="fragment fade-out">fade-out</p>
-            <p class="fragment current-visible">current-visible</p>
-            <p class="fragment highlight-red">highlight-red</p>
-            <p class="fragment highlight-blue">highlight-blue</p>
-          </section>
-        </section>
-
-        <section id="transitions">
-          <h2>Transition Styles</h2>
-          <p>
-            You can select from different transitions, like: <br>
-            <a href="?transition=none#/transitions">None</a> -
-            <a href="?transition=fade#/transitions">Fade</a> -
-            <a href="?transition=slide#/transitions">Slide</a> -
-            <a href="?transition=convex#/transitions">Convex</a> -
-            <a href="?transition=concave#/transitions">Concave</a> -
-            <a href="?transition=zoom#/transitions">Zoom</a>
-          </p>
-        </section>
-
-        <section id="themes">
-          <h2>Themes</h2>
-          <p>
-            reveal.js comes with a few themes built in: <br>
-            <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-          </p>
-        </section>
-
-        <section>
-          <section data-background="#dddddd">
-            <h2>Slide Backgrounds</h2>
-            <p>
-              Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-            </p>
-            <a href="#" class="navigate-down">
-              <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-            <h2>Image Backgrounds</h2>
-            <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-            <h2>Tiled Backgrounds</h2>
-            <pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-          </section>
-          <section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-            <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-              <h2>Video Backgrounds</h2>
-              <pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-            </div>
-          </section>
-        </section>
-
-        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-          <h2>Background Transitions</h2>
-          <p>
-            Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-          </p>
-          <pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-        </section>
-
-        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-          <h2>Background Transitions</h2>
-          <p>
-            You can override background transitions per-slide.
-          </p>
-          <pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-        </section>
-
-        <section>
-          <h2>Pretty Code</h2>
-          <pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
+          <pre><code class="scss">
+    // _my-ui.scss
+    #foo {
+      background: nth($palette, 1);
+      color: nth($palette, 2);
     }
-  }
-}
-          </code></pre>
-          <p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-        </section>
-
-        <section>
-          <h2>Marvelous List</h2>
-          <ul>
-            <li>No order here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Fantastic Ordered List</h2>
-          <ol>
-            <li>One is smaller than...</li>
-            <li>Two is smaller than...</li>
-            <li>Three!</li>
-          </ol>
-        </section>
-
-        <section>
-          <h2>Tabular Tables</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Value</th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Apples</td>
-                <td>$1</td>
-                <td>7</td>
-              <tr>
-              <tr>
-                <td>Lemonade</td>
-                <td>$2</td>
-                <td>18</td>
-              <tr>
-              <tr>
-                <td>Bread</td>
-                <td>$3</td>
-                <td>2</td>
-              <tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section>
-          <h2>Clever Quotes</h2>
-          <p>
-            These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-          </p>
-          <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-            reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-          </blockquote>
-        </section>
-
-        <section>
-          <h2>Intergalactic Interconnections</h2>
-          <p>
-            You can link between slides internally,
-            <a href="#/2/3">like this</a>.
-          </p>
-        </section>
-
-        <section>
-          <h2>Speaker View</h2>
-          <p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-          <p>Press the <em>S</em> key to try it out.</p>
-
-          <aside class="notes">
-            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-          </aside>
-        </section>
-
-        <section>
-          <h2>Export to PDF</h2>
-          <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-          <iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-        </section>
-
-        <section>
-          <h2>Global State</h2>
-          <p>
-            Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-            will be added as a class to the document element when the slide is open. This lets you
-            apply broader style changes, like switching the page background.
-          </p>
-        </section>
-
-        <section data-state="customevent">
-          <h2>State Events</h2>
-          <p>
-            Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-          </p>
-          <pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-  console.log( '"customevent" has fired' );
-} );
           </code></pre>
         </section>
 
         <section>
-          <h2>Take a Moment</h2>
-          <p>
-            Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+          <h2>Making it Dynamic</h2>
+
+          <pre><code class="scss">
+    // dynamic-palette.scss
+    $palette: get-dynamic-palette();
+    @import 'my-ui';
+          </code></pre>
+
+          <pre><code class="ruby">
+    # config/initializers/sass.rb
+    module Sass::Script::Functions
+      def get_dynamic_palette
+        palette = 2.times.map do
+          color = '#%06x' % (rand * 0xffffff)
+          Sass::Script::Value::Color.from_hex(color)
+        end
+
+        Sass::Script::Value::List.new(palette, :space)
+      end
+    end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Injecting data from the user</h2>
+
+          <pre><code class="scss">
+    // app/assets/stylesheets/dynamic-palette-rails.css.scss
+    $palette: get-dynamic-palette-from-user-somehow-magically();
+    @import 'my-ui';
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Use the asset pipeline?</h2>
+        </section>
+
+        <section>
+          <h3>Static context in the asset pipeline</h3>
+          <pre><code class="ruby">
+  # sass-rails/lib/sass/rails/template.rb
+  module Sass
+    module Rails
+      class SassTemplate < Tilt::Template
+        # ...
+        def evaluate(context, locals, &block)
+          cache_store = CacheStore.new(context.environment)
+
+          options = {
+            :filename => eval_file,
+            :line => line,
+            :syntax => syntax,
+            :cache_store => cache_store,
+            :importer => importer_class.new(context.pathname.to_s),
+            :load_paths => context.environment.paths.map { |path| importer_class.new(path.to_s) },
+            :sprockets => {
+              :context => context,
+              :environment => context.environment
+            }
+          }
+
+          sass_config = context.sass_config.merge(options)
+
+          engine = ::Sass::Engine.new(data, sass_config)
+          css = engine.render
+
+          engine.dependencies.map do |dependency|
+            context.depend_on(dependency.options[:filename])
+          end
+
+          css
+        rescue ::Sass::SyntaxError => e
+          context.__LINE__ = e.sass_backtrace.first[:line]
+          raise e
+        end
+        # ...
+      end
+    end
+  end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Oh, and assets are precompiled for production</h2>
+        </section>
+
+        <section>
+          <h2>We need our own render class for dynamic content</h2>
+        </section>
+
+        <!--<section>-->
+          <!--<h2><code>Sass::Engine</code> to the rescue</h2>-->
+          <!--<pre><code class="ruby">-->
+    <!--TEMPLATE = <<-EOS-->
+      <!--$color: red;-->
+      <!--.foo { color: $color; }-->
+    <!--EOS-->
+
+    <!--css = Sass::Engine.new(TEMPLATE, {-->
+      <!--syntax: :scss,-->
+      <!--style: :expanded-->
+    <!--})-->
+
+    <!--puts css-->
+          <!--</code></pre>-->
+          <!--<pre><code class="css">-->
+    <!--.foo {-->
+      <!--color: red;-->
+    <!--}-->
+          <!--</code></pre>-->
+        <!--</section>-->
+
+        <!--<section data-background="#0597FE">-->
+          <!--<h2>Global State</h2>-->
+          <!--<img src="/img/network-cables.jpg" height="400">-->
+        <!--</section>-->
+
+        <section>
+          <h2><code>Sass::Engine</code> to the rescue</h2>
+          <pre><code class="ruby" style="max-height: none;">
+    # lib/sass_custom_palette.rb
+    class SassCustomPalette
+      TEMPLATE = <<-EOS.freeze
+        $palette: get-custom-palette();
+        @import 'my-ui';
+      EOS
+
+      def initialize(color)
+        @color = color
+      end
+
+      def render
+        Sass::Engine.new(TEMPLATE, sass_custom_options).render
+      end
+
+      private
+
+      def sass_custom_options
+        { syntax: :scss,
+          style: :expanded,
+          custom: { color: @color } }
+      end
+    end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code class="ruby">
+    # app/controllers/palettes_controller.rb
+    class PalettesController < ApplicationController
+      def custom_palette
+        custom_renderer = SassCustomPalette.new(params[:custom_color])
+        @css = custom_renderer.render
+      end
+    end
+          </code></pre>
+
+          <pre><code class="haml">
+    -# app/views/palettes/custom_palette.css.haml
+    = @css.html_safe
+          </code></pre>
+
+          <pre><code class="ruby">
+    # config/initializers/sass.rb
+    module Sass::Script::Functions
+      def get_custom_palette
+        color = Sass::Script::Value::Color.from_hex(options[:custom][:color])
+
+        factor = Sass::Script::Value::Number.new(20, '%')
+
+        palette = [lighten(color, factor), darken(color, factor)]
+
+        Sass::Script::Value::List.new(palette, :space)
+      end
+    end
+          </code></pre>
+        </section>
+
+        <section>
+          <h1><code>-__-</code></h1>
+          <pre><code class="markdown">
+    Sass::SyntaxError - File to import not found or unreadable: my-ui.
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>All about the <code>load_paths</code></h2>
+          <pre><code class="scss">
+    // app/assets/stylesheets/includes/_my-ui.scss
+    #foo {
+      background: nth($palette, 1);
+      color: nth($palette, 2);
+    }
+          </code></pre>
+          <pre><code class="ruby">
+    class SassCustomPalette
+      private
+
+      def load_paths
+        root = Rails.root.join('app', 'assets', 'stylesheets')
+        Dir[root.join('includes')]
+      end
+      
+      def sass_custom_options
+        { syntax: :scss,
+          style: :expanded,
+          load_paths: load_paths,
+          custom: { color: @color } }
+      end
+    end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>
+            <a href="http://localhost:3000/palettes" target="_blank">Dynamic Sass Demo</a>
+          </h2>
+        </section>
+
+        <!--<section>-->
+          <!--<h4 class="fragment" style="color: #f00;"><code>#ff0000</code></h4>-->
+          <!--<div class="fragment" style="background: #f66; color: #900; float: left; margin-left: 100px; padding: 10px;">-->
+            <!--Hello World-->
+          <!--</div>-->
+          <!--<pre class="fragment" style="float: left; margin: 0 0 0 20px; width: 400px;"><code class="css">-->
+    <!--#foo {-->
+      <!--background: #ff6666;-->
+      <!--color: #990000;-->
+    <!--}-->
+          <!--</code></pre>-->
+          <!--<div style="clear: both; margin-bottom: 20px;"></div>-->
+
+          <!--<h4 class="fragment" style="color: #0f0;"><code>#00ff00</code></h4>-->
+          <!--<div class="fragment" style="background: #6f6; color: #090; float: left; margin-left: 100px; padding: 10px;">-->
+            <!--Hello World-->
+          <!--</div>-->
+          <!--<pre class="fragment" style="float: left; margin: 0 0 0 20px; width: 400px;"><code class="css">-->
+    <!--#foo {-->
+      <!--background: #66ff66;-->
+      <!--color: #009900;-->
+    <!--}-->
+          <!--</code></pre>-->
+          <!--<div style="clear: both; margin-bottom: 20px;"></div>-->
+
+          <!--<h4 class="fragment" style="color: #00f;"><code>#0000ff</code></h4>-->
+          <!--<div class="fragment" style="background: #66f; color: #009; float: left; margin-left: 100px; padding: 10px;">-->
+            <!--Hello World-->
+          <!--</div>-->
+          <!--<pre class="fragment" style="float: left; margin: 0 0 0 20px; width: 400px;"><code class="css">-->
+    <!--#foo {-->
+      <!--background: #6666ff;-->
+      <!--color: #000099;-->
+    <!--}-->
+          <!--</code></pre>-->
+        <!--</section>-->
+
+        <section>
+          <h3>Implementing in SimplyBuilt</h3>
+          <p class="fragment">Try out an HTTP request...</p>
+          <span class="fragment">...waiting</span>
+          <span class="fragment">...waiting</span>
+          <span class="fragment">...waiting</span>
+          <p class="fragment">...done!</p>
+
+          <div class="fragment">
+            <h3>Uh Oh</h3>
+            <img width="700" src="/img/high-request.png">
+          </div>
+        </section>
+
+        <section data-center="false">
+          <div class="worker worker1"></div>
+          <div class="worker worker2"></div>
+          <div class="worker worker3"></div>
+          <div class="worker worker4"></div>
+        </section>
+
+        <section>
+          <h2>Yup, we need caching</h2>
+
+          <p data-markdown>
+            [memcached.org](http://memcached.org) /
+            [github.com/mperham/dalli](https://github.com/mperham/dalli)
+          </p>
+
+          <pre><code class="ruby">
+    # config/environments/production.rb
+    config.cache_store = :mem_cache_store, MEM_CACHE_SERVER, MEM_CACHE_OPTIONS
+          </code></pre>
+
+          <pre><code class="ruby">
+    Rails.cache.write('foo', 'bar')
+
+    Rails.cache.fetch('foo') #=> 'bar'
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Introduce caching into our Sass rendering</h2>
+        </section>
+
+        <section>
+          <h4>Custom class for rendering and caching</h4>
+
+          <pre><code class="ruby" style="max-height: none;">
+    class SassRenderer
+      def initialize(template, cache_key, options)
+        @cache_key = cache_key
+        @engine = Sass::Engine.new(template, options)
+      end
+
+      def render
+        from_cache do
+          @engine.render
+        end
+      end
+
+      def cached?
+        Rails.cache.exist?(@cache_key)
+      end
+
+      def get_cached_css
+        Rails.cache.fetch(@cache_key)
+      end
+
+      private
+
+      def set_cached_css(css)
+        Rails.cache.write(@cache_key, css)
+      end
+
+      def from_cache(&write_block)
+        get_cached_css || write_block.call.tap { |css| set_cached_css(css) }
+      end
+    end
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Incorporate into <code>SassCustomPalette</code></h3>
+
+          <pre><code class="ruby">
+    class SassCustomPalette
+      def initialize(color)
+        @color = color
+        @cache_key = "custom_palette/#{@color}"
+        @engine = SassRenderer.new(TEMPLATE, @cache_key, sass_custom_options)
+      end
+
+      def render
+        @engine.render
+      end
+    end
+          </code></pre>
+
+          <h2 class="fragment">And?</h2>
+          <img class="fragment" width="800" src="/img/quick-request.png">
+        </section>
+
+        <section>
+          <h2>Process initial render<br>in the background</h2>
+          <img width="250" src="/img/sidekiq.png">
+          <p data-markdown>
+            [sidekiq.org](http://sidekiq.org/)
           </p>
         </section>
 
         <section>
-          <h2>Much more</h2>
-          <ul>
-            <li>Right-to-left support</li>
-            <li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-          </ul>
+          <pre><code class="ruby">
+    class SassCustomPaletteWorker
+      include Sidekiq::Worker
+
+      def perform(color)
+        SassCustomPalette.new(color).render
+      end
+    end
+          </code></pre>
+
+          <pre><code class="ruby">
+    class SassCustomPalette
+      def render_async
+        unless @engine.cached?
+          SassCustomPaletteWorker.render_css(@color)
+        end
+
+        @cache_key
+      end
+    end
+          </code></pre>
         </section>
 
-        <section style="text-align: left;">
-          <h1>THE END</h1>
-          <p>
-            - <a href="http://slides.com">Try the online editor</a> <br>
-            - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-          </p>
+        <section>
+          <pre><code class="ruby">
+    # app/controllers/palettes_controller.rb
+    class PalettesController < ApplicationController
+      def custom_palette
+        @css = SassRenderer.get_by_key(params[:key])
+      end
+
+      def request_custom_palette
+        custom_renderer = SassCustomPalette.new(params[:custom_color])
+        @key = custom_renderer.render_async
+      end
+    end
+          </code></pre>
+
+          <pre><code class="ruby">
+    class SassRenderer
+      def self.get_by_key(key)
+        Rails.cache.fetch(key)
+      end
+
+      private
+
+      def get_cached_css
+        self.class.get_by_key(@cache_key)
+      end
+    end
+          </code></pre>
         </section>
 
       </div>
@@ -455,6 +606,7 @@ Reveal.addEventListener( 'customevent', function() {
         center: true,
 
         transition: 'slide', // none/fade/slide/convex/concave/zoom
+        backgroundTransition: 'slide',
 
         // Optional reveal.js plugins
         dependencies: [

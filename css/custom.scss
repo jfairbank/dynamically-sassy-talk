@@ -1,0 +1,27 @@
+.reveal {
+  .worker {
+    background: #0f0;
+    height: 50px;
+    position: absolute;
+    top: -200px;
+    width: 50px;
+  }
+}
+
+@for $i from 1 through 4 {
+  .worker#{$i} {
+    left: 100px + ($i - 1) * 80px;
+  }
+}
+
+//.worker1 {
+  //left: 0;
+//}
+
+//.worker2 {
+  //left: 60px;
+//}
+
+//.worker3 {
+  //left: 120px;
+//}
