@@ -56,16 +56,16 @@
 
         <section>
           <h2>Hi, I'm Jeremy</h2>
+
           <img width="300" src="/img/bio-photo-circle-512x512.png">
-          <!--<img style="float: left;" width="300" src="/img/bio-photo-1-500x500.jpg">-->
 
-            <p>
-              Web Developer @ <a href="https://www.pushagency.io">Push Agency</a>
-            </p>
+          <p>
+            Web Developer @ <a href="https://www.pushagency.io">Push Agency</a>
+          </p>
 
-            <p>
-              Rails, Node, Angular, Backbone, and Marionette
-            </p>
+          <p>
+            Rails, Node, Angular, Backbone, and Marionette
+          </p>
         </section>
 
         <section data-background="#27252A">
@@ -257,33 +257,6 @@
           <h2>We need our own render class for dynamic content</h2>
         </section>
 
-        <!--<section>-->
-          <!--<h2><code>Sass::Engine</code> to the rescue</h2>-->
-          <!--<pre><code class="ruby">-->
-    <!--TEMPLATE = <<-EOS-->
-      <!--$color: red;-->
-      <!--.foo { color: $color; }-->
-    <!--EOS-->
-
-    <!--css = Sass::Engine.new(TEMPLATE, {-->
-      <!--syntax: :scss,-->
-      <!--style: :expanded-->
-    <!--})-->
-
-    <!--puts css-->
-          <!--</code></pre>-->
-          <!--<pre><code class="css">-->
-    <!--.foo {-->
-      <!--color: red;-->
-    <!--}-->
-          <!--</code></pre>-->
-        <!--</section>-->
-
-        <!--<section data-background="#0597FE">-->
-          <!--<h2>Global State</h2>-->
-          <!--<img src="/img/network-cables.jpg" height="400">-->
-        <!--</section>-->
-
         <section>
           <h2><code>Sass::Engine</code> to the rescue</h2>
           <pre><code class="ruby" style="max-height: none;">
@@ -382,46 +355,9 @@
 
         <section>
           <h2>
-            <a href="http://localhost:3000/palettes" target="_blank">Dynamic Sass Demo</a>
+            <a href="https://sassy-demos.jeremyfairbank.com/palettes" target="_blank">Dynamic Sass Demo</a>
           </h2>
         </section>
-
-        <!--<section>-->
-          <!--<h4 class="fragment" style="color: #f00;"><code>#ff0000</code></h4>-->
-          <!--<div class="fragment" style="background: #f66; color: #900; float: left; margin-left: 100px; padding: 10px;">-->
-            <!--Hello World-->
-          <!--</div>-->
-          <!--<pre class="fragment" style="float: left; margin: 0 0 0 20px; width: 400px;"><code class="css">-->
-    <!--#foo {-->
-      <!--background: #ff6666;-->
-      <!--color: #990000;-->
-    <!--}-->
-          <!--</code></pre>-->
-          <!--<div style="clear: both; margin-bottom: 20px;"></div>-->
-
-          <!--<h4 class="fragment" style="color: #0f0;"><code>#00ff00</code></h4>-->
-          <!--<div class="fragment" style="background: #6f6; color: #090; float: left; margin-left: 100px; padding: 10px;">-->
-            <!--Hello World-->
-          <!--</div>-->
-          <!--<pre class="fragment" style="float: left; margin: 0 0 0 20px; width: 400px;"><code class="css">-->
-    <!--#foo {-->
-      <!--background: #66ff66;-->
-      <!--color: #009900;-->
-    <!--}-->
-          <!--</code></pre>-->
-          <!--<div style="clear: both; margin-bottom: 20px;"></div>-->
-
-          <!--<h4 class="fragment" style="color: #00f;"><code>#0000ff</code></h4>-->
-          <!--<div class="fragment" style="background: #66f; color: #009; float: left; margin-left: 100px; padding: 10px;">-->
-            <!--Hello World-->
-          <!--</div>-->
-          <!--<pre class="fragment" style="float: left; margin: 0 0 0 20px; width: 400px;"><code class="css">-->
-    <!--#foo {-->
-      <!--background: #6666ff;-->
-      <!--color: #000099;-->
-    <!--}-->
-          <!--</code></pre>-->
-        <!--</section>-->
 
         <section>
           <h3>Implementing in SimplyBuilt</h3>
@@ -437,11 +373,29 @@
           </div>
         </section>
 
-        <section data-center="false">
-          <div class="worker worker1"></div>
-          <div class="worker worker2"></div>
-          <div class="worker worker3"></div>
-          <div class="worker worker4"></div>
+        <section data-transition="none">
+          <h2>Web Server</h2>
+          <img src="/img/dynamically-sassy-web-server_0000_1.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Web Server</h2>
+          <img src="/img/dynamically-sassy-web-server_0001_2.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Web Server</h2>
+          <img src="/img/dynamically-sassy-web-server_0002_3.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Web Server</h2>
+          <img src="/img/dynamically-sassy-web-server_0003_4.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Web Server</h2>
+          <img src="/img/dynamically-sassy-web-server_0004_5.png">
         </section>
 
         <section>
@@ -534,8 +488,37 @@
           </p>
         </section>
 
+        <section style="text-align: left;">
+          <div class="fragment">
+            <h2 style="color: #090;">Why Bother?</h2>
+            
+            <ul>
+              <li>Free up server thread quickly to handle new request</li>
+              <li>No thread concurrency guarantees with MRI</li>
+            </ul>
+          </div>
+          <br>
+          <div class="fragment">
+            <h2 style="color: #e00;">But...</h2>
+
+            <ul>
+              <li>
+                Code complexity
+                <ul>
+                  <li>Polling client</li>
+                  <li>Websockets</li>
+                </ul>
+              </li>
+              <li>More network traffic</li>
+            </ul>
+          </div>
+        </section>
+
         <section>
+          <h2>Setting up a Sidekiq worker</h2>
+
           <pre><code class="ruby">
+    # app/workers/sass_custom_palette_worker.rb
     class SassCustomPaletteWorker
       include Sidekiq::Worker
 
@@ -560,10 +543,13 @@
 
         <section>
           <pre><code class="ruby">
-    # app/controllers/palettes_controller.rb
     class PalettesController < ApplicationController
       def custom_palette
         @css = SassRenderer.get_by_key(params[:key])
+      end
+
+      def check_custom_palette
+        @ready = SassRenderer.cached?(params[:key])
       end
 
       def request_custom_palette
@@ -579,6 +565,10 @@
         Rails.cache.fetch(key)
       end
 
+      def self.cached?(key)
+        Rails.cache.exist?(key)
+      end
+
       private
 
       def get_cached_css
@@ -587,6 +577,98 @@
     end
           </code></pre>
         </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0000_1.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0001_2.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0002_3.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0003_4.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0004_5.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0005_6.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0006_7.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Polling</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0007_8.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Websockets</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0008_9.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Websockets</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0009_10.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Websockets</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0010_11.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Websockets</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0011_12.png">
+        </section>
+
+        <section data-transition="none">
+          <h2>Websockets</h2>
+          <img src="/img/dynamically-sassy-polling-websockets_0012_13.png">
+        </section>
+
+        <!--<section>-->
+          <!--<pre><code class="javascript">-->
+    <!--function getPaletteKey() {-->
+      <!--const reqUrl = '/palettes/request_custom_palette';-->
+      <!--return fetch(reqUrl)-->
+        <!--.then((resp) => resp.json().key);-->
+    <!--}-->
+          <!--</code></pre>-->
+
+          <!--<pre><code class="javascript">-->
+    <!--function checkForPalette(key) {-->
+      <!--const checkUrl = `/palettes/check_custom_palette?key=${key}`;-->
+      <!--return new Promise((resolve) => {-->
+        <!--function helper(resp) {-->
+          <!--fetch(checkUrl).then(() => {-->
+            <!--if (resp.json().ready) return resolve();-->
+            <!--setTimeout(helper, 250);-->
+          <!--});-->
+        <!--}-->
+        <!--helper();-->
+      <!--});-->
+    <!--}-->
+
+      <!--const url = '/palettes/custom_palette';-->
+          <!--</code></pre>-->
+        <!--</section>-->
 
       </div>
 
