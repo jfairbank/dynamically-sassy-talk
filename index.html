@@ -83,7 +83,7 @@
           <img src="/img/color-palettes.jpg">
         </section>
 
-        <section>
+        <section style="text-align: left;">
           <h1>Issues</h1>
           <ol>
             <li>Same Sass style sheet to render default and custom colors</li>
@@ -97,6 +97,7 @@
         <section>
           <img width="300" src="/img/sass.png">
           <h4>Syntactically Awesome Style Sheets</h4>
+          <a href="http://sass-lang.com/" target="_blank">sass-lang.com</a>
         </section>
 
         <section>
@@ -104,7 +105,7 @@
             <img height="100" src="/img/sass.png" style="vertical-align: middle;">
             <span style="vertical-align: middle;">in Action</span>
           </h2>
-          <pre><code class="scss">
+          <pre><code class="scss" style="max-height: none;">
     // Variables
     $font-size: 12px;
 
@@ -114,9 +115,10 @@
         font-size: $font-size;
       }
     }
-          </code></pre>
 
-          <pre><code class="scss">
+    // Include other Sass style sheets
+    @import 'bar';
+
     // Mixins
     @mixin has-cats {
       &::before {
@@ -138,7 +140,8 @@
             <li>Modularity</li>
             <li>DRY</li>
             <li>Data Structures</li>
-            <li>Color Logic</li>
+            <li>Scripting</li>
+            <li>Color Functions</li>
           </ul>
         </section>
 
@@ -327,13 +330,6 @@
 
         <section>
           <h2>All about the <code>load_paths</code></h2>
-          <pre><code class="scss">
-    // app/assets/stylesheets/includes/_my-ui.scss
-    #foo {
-      background: nth($palette, 1);
-      color: nth($palette, 2);
-    }
-          </code></pre>
           <pre><code class="ruby">
     class SassCustomPalette
       private
@@ -350,6 +346,14 @@
           custom: { color: @color } }
       end
     end
+          </code></pre>
+
+          <pre><code class="scss">
+    // app/assets/stylesheets/includes/_my-ui.scss
+    #foo {
+      background: nth($palette, 1);
+      color: nth($palette, 2);
+    }
           </code></pre>
         </section>
 
@@ -371,6 +375,21 @@
             <h3>Uh Oh</h3>
             <img width="700" src="/img/high-request.png">
           </div>
+        </section>
+
+        <!--<section data-background-image="/img/snail.jpg">-->
+        <section>
+          <h2>What's the problem?</h2>
+          <h3>Slow render times (1-1.5 seconds!)</h3>
+
+          <p>
+            <img src="/img/snail.jpg" width="400">
+          </p>
+
+          <ul>
+            <li>Complex Sass rules and file dependencies</li>
+            <li>Loops, data structure lookups, and Compass functions</li>
+          </ul>
         </section>
 
         <section data-transition="none">
