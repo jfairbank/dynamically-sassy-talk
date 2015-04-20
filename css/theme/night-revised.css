@@ -145,7 +145,6 @@ body {
   color: #DCDCDC; }
 
 .reveal table {
-  margin: auto;
   border-collapse: collapse;
   border-spacing: 0; }
 
@@ -154,8 +153,11 @@ body {
 
 .reveal table th, .reveal table td {
   text-align: left;
-  padding: 0.2em 0.5em 0.2em 0.5em;
-  border-bottom: 1px solid; }
+  padding: 0.2em 0.5em 0.2em 0.5em; }
+  .reveal table th:first-child, .reveal table td:first-child {
+    padding-left: 0; }
+  .reveal table th:last-child, .reveal table td:last-child {
+    padding-right: 0; }
 
 .reveal table tr:last-child td {
   border-bottom: none; }

@@ -68,6 +68,16 @@
           </p>
         </section>
 
+        <section style="text-align: left;">
+          <h2>Scope</h2>
+          <ul>
+            <li class="fragment">Generate dynamic CSS</li>
+            <li class="fragment">Write Sass functions in Ruby</li>
+            <li class="fragment">Identify performance issues</li>
+            <li class="fragment">Utilize caching and background processing to improve performance</li>
+          </ul>
+        </section>
+
         <section data-background="#27252A">
           <img src="/img/simplybuilt.png" width="400">
           <br>
@@ -88,8 +98,8 @@
           <ol>
             <li>Same Sass style sheet to render default and custom colors</li>
             <li>Rendering custom color style sheets from a controller</li>
-            <li>Slow HTTP requests</li>
-            <li>Caching custom style sheets</li>
+            <li>Slow Sass render times</li>
+            <li>Caching generated CSS</li>
             <li>Background processing</li>
           </ol>
         </section>
@@ -291,21 +301,6 @@
 
         <section>
           <pre><code class="ruby">
-    # app/controllers/palettes_controller.rb
-    class PalettesController < ApplicationController
-      def custom_palette
-        custom_renderer = SassCustomPalette.new(params[:custom_color])
-        @css = custom_renderer.render
-      end
-    end
-          </code></pre>
-
-          <pre><code class="haml">
-    -# app/views/palettes/custom_palette.css.haml
-    = @css.html_safe
-          </code></pre>
-
-          <pre><code class="ruby">
     # config/initializers/sass.rb
     module Sass::Script::Functions
       def get_custom_palette
@@ -318,6 +313,21 @@
         Sass::Script::Value::List.new(palette, :space)
       end
     end
+          </code></pre>
+
+          <pre><code class="ruby">
+    # app/controllers/palettes_controller.rb
+    class PalettesController < ApplicationController
+      def custom_palette
+        custom_renderer = SassCustomPalette.new(params[:custom_color])
+        @css = custom_renderer.render
+      end
+    end
+          </code></pre>
+
+          <pre><code class="haml">
+    -# app/views/palettes/custom_palette.css.haml
+    = @css.html_safe
           </code></pre>
         </section>
 
@@ -502,8 +512,10 @@
         <section>
           <h2>Process initial render<br>in the background</h2>
           <img width="250" src="/img/sidekiq.png">
-          <p data-markdown>
-            [sidekiq.org](http://sidekiq.org/)
+          <p>
+            <a href="http://sidekiq.org" target="_blank">
+              sidekiq.org
+            </a>
           </p>
         </section>
 
@@ -552,7 +564,7 @@
     class SassCustomPalette
       def render_async
         unless @engine.cached?
-          SassCustomPaletteWorker.render_css(@color)
+          SassCustomPaletteWorker.peform_async(@color)
         end
 
         @cache_key
@@ -675,36 +687,39 @@
           </ul>
         </section>
 
-        <section>
+        <section style="text-align: left;">
           <h1>Thanks!</h1>
+          <table>
+            <tr>
+              <td>Slides:</td>
+              <td>
+                <a href="http://sassy-talk.jeremyfairbank.com" target="_blank">
+                  sassy-talk.jeremyfairbank.com
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Demo Source:</td>
+              <td>
+                <a href="https://github.com/jfairbank/dynamically-sassy-demos" target="_blank">
+                  github.com/jfairbank/dynamically-sassy-demos
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Blog:</td>
+              <td>
+                <a href="http://blog.jeremyfairbank.com" target="_blank">
+                  blog.jeremyfairbank.com
+                </a>
+              </td>
+            </tr>
+          </table>
+          <p>
+            <a href="https://twitter.com/elpapapollo">@elpapapollo</a> /
+            <a href="https://github.com/jfairbank">github.com/jfairbank</a>
+          </p>
         </section>
-
-        <!--<section>-->
-          <!--<pre><code class="javascript">-->
-    <!--function getPaletteKey() {-->
-      <!--const reqUrl = '/palettes/request_custom_palette';-->
-      <!--return fetch(reqUrl)-->
-        <!--.then((resp) => resp.json().key);-->
-    <!--}-->
-          <!--</code></pre>-->
-
-          <!--<pre><code class="javascript">-->
-    <!--function checkForPalette(key) {-->
-      <!--const checkUrl = `/palettes/check_custom_palette?key=${key}`;-->
-      <!--return new Promise((resolve) => {-->
-        <!--function helper(resp) {-->
-          <!--fetch(checkUrl).then(() => {-->
-            <!--if (resp.json().ready) return resolve();-->
-            <!--setTimeout(helper, 250);-->
-          <!--});-->
-        <!--}-->
-        <!--helper();-->
-      <!--});-->
-    <!--}-->
-
-      <!--const url = '/palettes/custom_palette';-->
-          <!--</code></pre>-->
-        <!--</section>-->
 
       </div>
 
