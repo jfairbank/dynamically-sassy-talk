@@ -42,43 +42,63 @@
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
         <section>
+          <p>
+            <img width="300" src="/img/sass.png">
+          </p>
           <h2>Dynamically Sassy</h2>
           <h3>Generating Dynamic CSS in Rails</h3>
           <h4>
             <a href="http://blog.jeremyfairbank.com">Jeremy Fairbank</a>
           </h4>
-          
-          <small>
-            <a href="https://twitter.com/elpapapollo">@elpapapollo</a> /
-            <a href="https://github.com/jfairbank">github.com/jfairbank</a>
-          </small>
         </section>
 
         <section data-background="#0E7388">
-          <h2 style="color: #ECD70C;">Hi, I'm Jeremy</h2>
-
-          <img width="300" src="/img/bio-photo-circle-512x512.png">
-
-          <p>
-            Web Developer @
-            <a style="color: #ECD70C;" href="https://www.pushagency.io">
-              pushagency.io
+          <h1 style="color: #ECD70C;">Hi, I'm Jeremy</h1>
+          <h2>...or</h2>
+          <h2>
+            <a style="color: #ECD70C;" href="https://twitter.com/elpapapollo">
+              @elpapapollo
             </a>
-          </p>
+          </h2>
 
-          <p>
-            Rails, Node, Angular, Backbone, and Marionette
-          </p>
+          <!--<img width="300" src="/img/bio-photo-circle-512x512.png">-->
+
+          <!--<small>-->
+            <!--<a href="https://twitter.com/elpapapollo">@elpapapollo</a> /-->
+            <!--<a href="https://github.com/jfairbank">github.com/jfairbank</a>-->
+          <!--</small>-->
+
+          <!--<p>-->
+            <!--Rails, Node, Angular, Backbone, and Marionette-->
+          <!--</p>-->
         </section>
 
-        <section data-background="#132" style="text-align: left;">
-          <h1 style="color: #ffff00;">Scope</h1>
-          <ul>
-            <li class="fragment roll-in">Generate dynamic CSS</li>
-            <li class="fragment roll-in">Write Sass functions in Ruby</li>
-            <li class="fragment roll-in">Identify performance issues</li>
-            <li class="fragment roll-in">Utilize caching and background processing to improve performance</li>
-          </ul>
+        <section>
+          <img src="/img/push.png">
+
+          <h3>
+            <a href="https://www.pushagency.io">pushagency.io</a>
+          </h3>
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">What are we doing?</h1>
+        </section>
+
+        <section data-background="#132">
+          <h2 style="color: #ffff00;">Generate dynamic CSS</h2>
+        </section>
+
+        <section data-background="#132">
+          <h2 style="color: #ffff00;">Write Sass functions in Ruby</h2>
+        </section>
+
+        <section data-background="#132">
+          <h2 style="color: #ffff00;">Identify performance issues</h2>
+        </section>
+
+        <section data-background="#132">
+          <h2 style="color: #ffff00;">Caching and background processing</h2>
         </section>
 
         <section data-background="#27252A">
@@ -96,15 +116,32 @@
           <img src="/img/color-palettes.jpg">
         </section>
 
-        <section data-background="#500" style="text-align: left;">
-          <h1 style="color: #c27b5e;">Issues</h1>
-          <ol>
-            <li>Same Sass style sheet to render default and custom colors</li>
-            <li>Rendering custom color style sheets from a controller</li>
-            <li>Slow Sass render times</li>
-            <li>Caching generated CSS</li>
-            <li>Background processing</li>
-          </ol>
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Implementation Issues</h1>
+        </section>
+
+        <section data-background="#500">
+          <h2 style="color: #c27b5e;">
+            Same Sass style sheet for default and custom color palettes
+          </h2>
+        </section>
+
+        <section data-background="#500">
+          <h2 style="color: #c27b5e;">
+            Rendering custom color style sheets from a controller
+          </h2>
+        </section>
+
+        <section data-background="#500">
+          <h2 style="color: #c27b5e;">Slow Sass render times</h2>
+        </section>
+
+        <section data-background="#500">
+          <h2 style="color: #c27b5e;">Caching generated CSS</h2>
+        </section>
+
+        <section data-background="#500">
+          <h2 style="color: #c27b5e;">Rendering in a worker</h2>
         </section>
 
         <section data-background="#80345A">
@@ -116,11 +153,7 @@
         </section>
 
         <section>
-          <h2>
-            <img height="100" src="/img/sass.png" style="vertical-align: middle;">
-            <span style="vertical-align: middle;">in Action</span>
-          </h2>
-          <pre><code class="scss" style="max-height: none;">
+          <pre><code class="scss">
     // Variables
     $font-size: 12px;
 
@@ -150,19 +183,41 @@
 
         <section data-background="#203134">
           <h1 style="color: #3E8F9A;">So What?</h1>
-          <img width="200" src="/img/sass.png" style="margin-right: 30px; vertical-align: middle;">
-          <ul style="vertical-align: middle;">
-            <li>Modularity</li>
-            <li>DRY</li>
-            <li>Data Structures</li>
-            <li>Scripting</li>
-            <li>Color Functions</li>
-          </ul>
+        </section>
+
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">Modularity</h1>
+        </section>
+
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">DRY</h1>
+        </section>
+
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">Data Structures</h1>
+        </section>
+
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">Scripting</h1>
+        </section>
+
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">Color Functions</h1>
+        </section>
+
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Reusing style sheets</h1>
+        </section>
+
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">It's all in the variables</h1>
+        </section>
+
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Static Context</h1>
         </section>
 
         <section>
-          <h2>Reusing style sheets</h2>
-          <h4>It's all in the variables</h4>
           <pre><code class="scss">
     // palette1.scss
     $palette: (red green);
@@ -184,9 +239,15 @@
           </code></pre>
         </section>
 
-        <section data-background="#009BC2">
-          <h2>Making it Dynamic</h2>
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Dynamic Context</h1>
+        </section>
 
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Sass Functions</h1>
+        </section>
+
+        <section>
           <pre><code class="scss">
     // dynamic-palette.scss
     $palette: get-dynamic-palette();
@@ -208,9 +269,11 @@
           </code></pre>
         </section>
 
-        <section>
-          <h2>Injecting data from the user</h2>
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Injecting data from a user?</h1>
+        </section>
 
+        <section>
           <pre><code class="scss">
     // app/assets/stylesheets/dynamic-palette-rails.css.scss
     $palette: get-dynamic-palette-from-user-somehow-magically();
@@ -222,9 +285,12 @@
           <h1 style="color: #546236;">Use the asset pipeline?</h1>
         </section>
 
+        <section data-background="#C1E27D">
+          <h1 style="color: #546236;">"Static" context in the tilt template</h1>
+        </section>
+
         <section>
-          <h3>Static context in the asset pipeline</h3>
-          <pre><code class="ruby">
+          <pre><code class="ruby" style="font-size: 14px; line-height: 14px;">
   # sass-rails/lib/sass/rails/template.rb
   module Sass
     module Rails
@@ -267,17 +333,21 @@
           </code></pre>
         </section>
 
-        <section data-background="#753f0d">
-          <h2 style="color: #E8C15D;">Oh, and assets are precompiled for production</h2>
+        <section data-background="#C1E27D">
+          <h2 style="color: #546236;">Oh, and assets are precompiled for production</h2>
         </section>
 
         <section data-background="#7A4B82">
           <h2 style="color: #a6e1d0;">We need our own render class for dynamic content</h2>
         </section>
 
+        <section data-background="#7A4B82">
+          <h1 style="color: #a6e1d0;"><code>Sass::Engine</code></h1>
+          <h1 style="color: #a6e1d0;">to the rescue</h1>
+        </section>
+
         <section>
-          <h2><code>Sass::Engine</code> to the rescue</h2>
-          <pre><code class="ruby" style="max-height: none;">
+          <pre><code class="ruby">
     # lib/sass_custom_palette.rb
     class SassCustomPalette
       TEMPLATE = <<-EOS.freeze
@@ -309,22 +379,32 @@
     # config/initializers/sass.rb
     module Sass::Script::Functions
       def get_custom_palette
-        color = Sass::Script::Value::Color.from_hex(options[:custom][:color])
+        color = Sass::Script::Value::Color.from_hex(
+          options[:custom][:color]
+        )
 
         factor = Sass::Script::Value::Number.new(20, '%')
 
-        palette = [lighten(color, factor), darken(color, factor)]
+        palette = [
+          lighten(color, factor),
+          darken(color, factor)
+        ]
 
         Sass::Script::Value::List.new(palette, :space)
       end
     end
           </code></pre>
+        </section>
 
+        <section>
           <pre><code class="ruby">
     # app/controllers/palettes_controller.rb
     class PalettesController < ApplicationController
       def custom_palette
-        custom_renderer = SassCustomPalette.new(params[:custom_color])
+        custom_renderer = SassCustomPalette.new(
+          params[:custom_color]
+        )
+
         @css = custom_renderer.render
       end
     end
@@ -336,15 +416,23 @@
           </code></pre>
         </section>
 
-        <section>
-          <h1><code>-__-</code></h1>
-          <pre><code class="markdown">
+        <section data-background="#7A4B82">
+          <h1 style="color: #a6e1d0;">Try it out...</h1>
+        </section>
+
+        <section data-background="#7A4B82">
+          <pre><code class="markdown" style="font-size: 22px;">
     Sass::SyntaxError - File to import not found or unreadable: my-ui.
           </code></pre>
+          <br><br>
+          <h1 style="color: #a6e1d0;"><code>-__-</code></h1>
+        </section>
+
+        <section data-background="#753f0d">
+          <h1 style="color: #E8C15D;">There's always a load path</h1>
         </section>
 
         <section>
-          <h2>All about the <code>load_paths</code></h2>
           <pre><code class="ruby">
     class SassCustomPalette
       private
@@ -466,7 +554,7 @@
         <section>
           <h4>Custom class for rendering and caching</h4>
 
-          <pre><code class="ruby" style="max-height: none;">
+          <pre><code class="ruby">
     class SassRenderer
       def initialize(template, cache_key, options)
         @cache_key = cache_key
@@ -753,8 +841,8 @@
         history: true,
         center: true,
 
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-        backgroundTransition: 'slide',
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        backgroundTransition: 'none',
 
         // Optional reveal.js plugins
         dependencies: [

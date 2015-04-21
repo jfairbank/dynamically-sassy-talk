@@ -156,7 +156,7 @@ body {
 .reveal pre {
 	display: block;
 	position: relative;
-	width: 90%;
+	//width: 90%;
 	margin: $blockMargin auto;
 
 	text-align: left;
@@ -175,12 +175,14 @@ body {
 .reveal pre code {
   border-radius: 4px;
 	display: block;
-	padding: 5px;
+	padding: 2px;
 	overflow: auto;
-	max-height: 400px;
+	//max-height: 400px;
 	word-wrap: normal;
 	//background: #3F3F3F;
 	color: #DCDCDC;
+  font-size: 24px;
+  line-height: 24px;
 }
 
 .reveal table {

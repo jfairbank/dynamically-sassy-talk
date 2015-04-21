@@ -123,7 +123,6 @@ body {
 .reveal pre {
   display: block;
   position: relative;
-  width: 90%;
   margin: 20px auto;
   text-align: left;
   font-size: 0.55em;
@@ -138,11 +137,12 @@ body {
 .reveal pre code {
   border-radius: 4px;
   display: block;
-  padding: 5px;
+  padding: 2px;
   overflow: auto;
-  max-height: 400px;
   word-wrap: normal;
-  color: #DCDCDC; }
+  color: #DCDCDC;
+  font-size: 24px;
+  line-height: 24px; }
 
 .reveal table {
   border-collapse: collapse;
