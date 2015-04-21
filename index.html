@@ -473,33 +473,60 @@
           </p>
         </section>
 
-        <section>
-          <h3>Implementing in SimplyBuilt</h3>
-          <p class="fragment">Try out an HTTP request...</p>
-          <span class="fragment">...waiting</span>
-          <span class="fragment">...waiting</span>
-          <span class="fragment">...waiting</span>
-          <p class="fragment">...done!</p>
-
-          <div class="fragment">
-            <h3>Uh Oh</h3>
-            <img width="700" src="/img/high-request.png">
-          </div>
+        <section data-background="#753f0d">
+          <h1 style="color: #E8C15D;">Implementing in SimplyBuilt</h1>
         </section>
 
-        <!--<section data-background-image="/img/snail.jpg">-->
-        <section>
-          <h2>What's the problem?</h2>
-          <h3>Slow render times (1-1.5 seconds!)</h3>
+        <section data-background="#753f0d">
+          <h1 style="color: #E8C15D;">GET</h2>
+          <h3 style="color: #E8C15D;">/custom_palette.css?custom_color=%23f00</h2>
+        </section>
 
-          <p>
-            <img src="/img/snail.jpg" width="400">
-          </p>
+        <section data-background="#753f0d">
+          <h1 class="fragment" style="color: #E8C15D;">...waiting</h2>
+          <h1 class="fragment" style="color: #E8C15D;">...waiting</h2>
+          <h1 class="fragment" style="color: #E8C15D;">...waiting</h2>
+        </section>
 
-          <ul>
-            <li>Complex Sass rules and file dependencies</li>
-            <li>Loops, data structure lookups, and Compass functions</li>
-          </ul>
+        <section data-background="#753f0d">
+          <h1 style="color: #E8C15D;">Done!</h2>
+        </section>
+
+        <section data-background="/img/shocked.gif">
+          <img width="800" src="/img/high-request.png">
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">What's the problem?</h1>
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">Slow render times</h1>
+          <h2 style="color: #ffff00;">(1-1.5 seconds!)</h2>
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">Complex Sass rules</h1>
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">Many file dependencies</h1>
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">Loops</h1>
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">Data structure lookups</h1>
+        </section>
+
+        <section data-background="#132">
+          <h1 style="color: #ffff00;">Compass functions</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Can impact the whole server</h1>
         </section>
 
         <section data-transition="none">
@@ -527,17 +554,24 @@
           <img src="/img/dynamically-sassy-web-server_0004_5.png">
         </section>
 
-        <section>
-          <h2>Yup, we need caching</h2>
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Yup, we need caching</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Memcached</h1>
 
           <p data-markdown>
             [memcached.org](http://memcached.org) /
             [github.com/mperham/dalli](https://github.com/mperham/dalli)
           </p>
+        </section>
 
+        <section>
           <pre><code class="ruby">
     # config/environments/production.rb
-    config.cache_store = :mem_cache_store, MEM_CACHE_SERVER, MEM_CACHE_OPTIONS
+    config.cache_store = :mem_cache_store, \
+      MEM_CACHE_SERVER, MEM_CACHE_OPTIONS
           </code></pre>
 
           <pre><code class="ruby">
@@ -547,14 +581,12 @@
           </code></pre>
         </section>
 
-        <section>
-          <h2>Introduce caching into our Sass rendering</h2>
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Introduce caching into our Sass rendering</h1>
         </section>
 
         <section>
-          <h4>Custom class for rendering and caching</h4>
-
-          <pre><code class="ruby">
+          <pre><code class="ruby" style="font-size: 20px; line-height: 22px;">
     class SassRenderer
       def initialize(template, cache_key, options)
         @cache_key = cache_key
@@ -562,9 +594,7 @@
       end
 
       def render
-        from_cache do
-          @engine.render
-        end
+        from_cache { @engine.render }
       end
 
       def cached?
@@ -588,70 +618,103 @@
           </code></pre>
         </section>
 
-        <section>
-          <h3>Incorporate into <code>SassCustomPalette</code></h3>
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Incorporate into</h1>
+          <h2 style="color: #c27b5e;"><code>SassCustomPalette</code></h2>
+        </section>
 
+        <section>
           <pre><code class="ruby">
     class SassCustomPalette
       def initialize(color)
         @color = color
+
         @cache_key = "custom_palette/#{@color}"
-        @engine = SassRenderer.new(TEMPLATE, @cache_key, sass_custom_options)
+
+        @engine = SassRenderer.new(
+          TEMPLATE, @cache_key, sass_custom_options
+        )
       end
 
-      def render
-        @engine.render
-      end
+      delegate :render, to: :@engine
     end
           </code></pre>
-
-          <h2 class="fragment">And?</h2>
         </section>
 
-        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-          <img class="fragment" width="800" src="/img/quick-request.png">
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">And?</h1>
         </section>
 
-        <section>
-          <h2>Process initial render<br>in the background</h2>
-          <img width="250" src="/img/sidekiq.png">
-          <p>
+        <section data-background="/img/andy.gif">
+          <img width="900" src="/img/quick-request.png">
+        </section>
+
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">What about the first render?</h1>
+        </section>
+
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">Process in the background</h1>
+        </section>
+
+        <section data-background="#203134">
+          <img width="300" src="/img/sidekiq.png">
+          <h2>
             <a href="http://sidekiq.org" target="_blank">
               sidekiq.org
             </a>
-          </p>
+          </h2>
         </section>
 
-        <section style="text-align: left;">
-          <div class="fragment">
-            <h2 style="color: #090;">Why Bother?</h2>
-            
-            <ul>
-              <li>Free up server thread quickly to handle new request</li>
-              <li>No thread concurrency guarantees with MRI</li>
-            </ul>
-          </div>
-          <br>
-          <div class="fragment">
-            <h2 style="color: #e00;">But...</h2>
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">Why Bother?</h1>
+        </section>
 
-            <ul>
-              <li>
-                Code complexity
-                <ul>
-                  <li>Polling client</li>
-                  <li>Websockets</li>
-                  <li>Failing jobs, no workers available, job takes too long, etc.</li>
-                </ul>
-              </li>
-              <li>More network traffic</li>
-            </ul>
-          </div>
+        <section data-background="#203134">
+          <h2 style="color: #3E8F9A;">
+            Free up server thread quickly to handle new request
+          </h2>
+        </section>
+
+        <section data-background="#203134">
+          <h2 style="color: #3E8F9A;">
+            No thread concurrency guarantees with MRI
+          </h2>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">But...</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Code complexity</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Polling client</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Websockets</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Failing jobs</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Waiting on an available worker</h1>
+        </section>
+
+        <section data-background="#500">
+          <h1 style="color: #c27b5e;">Network traffic</h1>
+        </section>
+
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Setting up a Sidekiq worker</h1>
         </section>
 
         <section>
-          <h2>Setting up a Sidekiq worker</h2>
-
           <pre><code class="ruby">
     # app/workers/sass_custom_palette_worker.rb
     class SassCustomPaletteWorker
@@ -678,23 +741,6 @@
 
         <section>
           <pre><code class="ruby">
-    class PalettesController < ApplicationController
-      def custom_palette
-        @css = SassRenderer.get_by_key(params[:key])
-      end
-
-      def check_custom_palette
-        @ready = SassRenderer.cached?(params[:key])
-      end
-
-      def request_custom_palette
-        custom_renderer = SassCustomPalette.new(params[:custom_color])
-        @key = custom_renderer.render_async
-      end
-    end
-          </code></pre>
-
-          <pre><code class="ruby">
     class SassRenderer
       def self.get_by_key(key)
         Rails.cache.fetch(key)
@@ -711,6 +757,10 @@
       end
     end
           </code></pre>
+        </section>
+
+        <section data-background="#0E7388">
+          <h2 style="color: #ECD70C;">What would polling look like?</h2>
         </section>
 
         <section data-transition="none">
@@ -753,50 +803,97 @@
           <img src="/img/dynamically-sassy-polling-websockets_0007_8.png">
         </section>
 
-        <section data-transition="none">
-          <h2>Websockets</h2>
-          <img src="/img/dynamically-sassy-polling-websockets_0008_9.png">
+        <section>
+          <pre><code class="ruby">
+    class PalettesController < ApplicationController
+      def custom_palette
+        @css = SassRenderer.get_by_key(params[:key])
+      end
+
+      def check_custom_palette
+        @ready = SassRenderer.cached?(params[:key])
+      end
+
+      def request_custom_palette
+        custom_renderer = SassCustomPalette.new(params[:custom_color])
+        @key = custom_renderer.render_async
+      end
+    end
+          </code></pre>
         </section>
 
-        <section data-transition="none">
-          <h2>Websockets</h2>
-          <img src="/img/dynamically-sassy-polling-websockets_0009_10.png">
+        <section data-background="#C1E27D">
+          <h1 style="color: #546236;">Is this the best answer?</h1>
         </section>
 
-        <section data-transition="none">
-          <h2>Websockets</h2>
-          <img src="/img/dynamically-sassy-polling-websockets_0010_11.png">
+        <section data-background="#C1E27D">
+          <h1 style="color: #546236;">Can refactoring simplify our Sass?</h1>
         </section>
 
-        <section data-transition="none">
-          <h2>Websockets</h2>
-          <img src="/img/dynamically-sassy-polling-websockets_0011_12.png">
+        <section data-background="#C1E27D">
+          <h1 style="color: #546236;">YES!</h1>
+          <img src="/img/fast-renders.png">
         </section>
 
-        <section data-transition="none">
-          <h2>Websockets</h2>
-          <img src="/img/dynamically-sassy-polling-websockets_0012_13.png">
+        <section data-background="#C1E27D">
+          <h2 style="color: #546236;">Identified areas for code improvement</h2>
         </section>
 
-        <section style="text-align: left;">
-          <h2>Recap</h2>
-          <ul>
-            <li>Reuse Sass style sheets to render static and dynamic content</li>
-            <li>Sass rendering isn't always fast</li>
-            <li>Web server performance</li>
-            <li>Importance of caching</li>
-            <li>Background processing</li>
-            <li>Client side polling and websockets</li>
-          </ul>
+        <section data-background="#C1E27D">
+          <h2 style="color: #546236;">Acceptable render times</h2>
         </section>
 
-        <section style="text-align: left;">
-          <h1>Thanks!</h1>
+        <section data-background="#C1E27D">
+          <h2 style="color: #546236;">Eliminate need for background processing</h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h1 style="color: #a6e1d0;">Recap</h1>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            Reuse Sass style sheets to render static and dynamic content
+          </h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            Sass rendering isn't always fast
+          </h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            Web server performance
+          </h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            Importance of caching
+          </h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            Background processing
+          </h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            Sometimes refactoring is all you need
+          </h2>
+        </section>
+
+        <section style="text-align: left;" data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Thanks!</h1>
           <table>
             <tr>
               <td>Slides:</td>
               <td>
-                <a href="http://sassy-talk.jeremyfairbank.com" target="_blank">
+                <a style="color: #ECD70C;" href="http://sassy-talk.jeremyfairbank.com" target="_blank">
                   sassy-talk.jeremyfairbank.com
                 </a>
               </td>
@@ -804,7 +901,7 @@
             <tr>
               <td>Demo Source:</td>
               <td>
-                <a href="https://github.com/jfairbank/dynamically-sassy-demos" target="_blank">
+                <a style="color: #ECD70C;" href="https://github.com/jfairbank/dynamically-sassy-demos" target="_blank">
                   github.com/jfairbank/dynamically-sassy-demos
                 </a>
               </td>
@@ -812,15 +909,15 @@
             <tr>
               <td>Blog:</td>
               <td>
-                <a href="http://blog.jeremyfairbank.com" target="_blank">
+                <a style="color: #ECD70C;" href="http://blog.jeremyfairbank.com" target="_blank">
                   blog.jeremyfairbank.com
                 </a>
               </td>
             </tr>
           </table>
           <p>
-            <a href="https://twitter.com/elpapapollo">@elpapapollo</a> /
-            <a href="https://github.com/jfairbank">github.com/jfairbank</a>
+            <a style="color: #ECD70C;" href="https://twitter.com/elpapapollo">@elpapapollo</a> /
+            <a style="color: #ECD70C;" href="https://github.com/jfairbank">github.com/jfairbank</a>
           </p>
         </section>
 
