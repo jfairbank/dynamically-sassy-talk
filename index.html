@@ -800,20 +800,20 @@
         <section>
           <pre><code class="ruby">
     class PalettesController < ApplicationController
-      def custom_palette
-        @css = SassRenderer.get_by_key(params[:key])
-      end
-
-      def check_custom_palette
-        @ready = SassRenderer.cached?(params[:key])
-      end
-
       def request_custom_palette
         custom_renderer = SassCustomPalette.new(
           params[:custom_color]
         )
 
         @key = custom_renderer.render_async
+      end
+
+      def check_custom_palette
+        @ready = SassRenderer.cached?(params[:key])
+      end
+
+      def custom_palette
+        @css = SassRenderer.get_by_key(params[:key])
       end
     end
           </code></pre>
