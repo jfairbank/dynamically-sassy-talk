@@ -52,37 +52,8 @@
           </h4>
         </section>
 
-        <section data-background="#0E7388">
-          <h1 style="color: #ECD70C;">Hi, I'm Jeremy</h1>
-          <h2>...or</h2>
-          <h2>
-            <a style="color: #ECD70C;" href="https://twitter.com/elpapapollo">
-              @elpapapollo
-            </a>
-          </h2>
-
-          <!--<img width="300" src="/img/bio-photo-circle-512x512.png">-->
-
-          <!--<small>-->
-            <!--<a href="https://twitter.com/elpapapollo">@elpapapollo</a> /-->
-            <!--<a href="https://github.com/jfairbank">github.com/jfairbank</a>-->
-          <!--</small>-->
-
-          <!--<p>-->
-            <!--Rails, Node, Angular, Backbone, and Marionette-->
-          <!--</p>-->
-        </section>
-
-        <section>
-          <img src="/img/push.png">
-
-          <h3>
-            <a href="https://www.pushagency.io">pushagency.io</a>
-          </h3>
-        </section>
-
         <section data-background="#132">
-          <h1 style="color: #ffff00;">What are we doing?</h1>
+          <h1 style="color: #ffff00;">What are we going to talk about?</h1>
         </section>
 
         <section data-background="#132">
@@ -100,6 +71,25 @@
         <section data-background="#132">
           <h2 style="color: #ffff00;">Caching and background processing</h2>
         </section>
+
+        <section data-background="#0E7388">
+          <h1 style="color: #ECD70C;">Hi, I'm Jeremy</h1>
+          <h2>...or</h2>
+          <h2>
+            <a style="color: #ECD70C;" href="https://twitter.com/elpapapollo">
+              @elpapapollo
+            </a>
+          </h2>
+        </section>
+
+        <section>
+          <img src="/img/push.png">
+
+          <h3>
+            <a href="https://www.pushagency.io">pushagency.io</a>
+          </h3>
+        </section>
+
 
         <section data-background="#27252A">
           <img src="/img/simplybuilt.png" width="400">
@@ -205,6 +195,10 @@
           <h1 style="color: #3E8F9A;">Color Functions</h1>
         </section>
 
+        <section data-background="#203134">
+          <h1 style="color: #3E8F9A;">That's Sass</h1>
+        </section>
+
         <section data-background="#0E7388">
           <h1 style="color: #ECD70C;">Reusing style sheets</h1>
         </section>
@@ -219,6 +213,14 @@
 
         <section>
           <pre><code class="scss">
+    // _my-ui.scss
+    #foo {
+      background: nth($palette, 1);
+      color: nth($palette, 2);
+    }
+          </code></pre>
+
+          <pre><code class="scss">
     // palette1.scss
     $palette: (red green);
     @import 'my-ui';
@@ -228,14 +230,6 @@
     // palette2.scss
     $palette: (blue yellow);
     @import 'my-ui';
-          </code></pre>
-
-          <pre><code class="scss">
-    // _my-ui.scss
-    #foo {
-      background: nth($palette, 1);
-      color: nth($palette, 2);
-    }
           </code></pre>
         </section>
 
@@ -815,7 +809,10 @@
       end
 
       def request_custom_palette
-        custom_renderer = SassCustomPalette.new(params[:custom_color])
+        custom_renderer = SassCustomPalette.new(
+          params[:custom_color]
+        )
+
         @key = custom_renderer.render_async
       end
     end
@@ -887,6 +884,24 @@
           </h2>
         </section>
 
+        <section data-background="/img/doublerainbow.jpg">
+          <h2 style="color: #000;">
+            So what does this mean?
+          </h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            Things aren't always simple
+          </h2>
+        </section>
+
+        <section data-background="#7A4B82">
+          <h2 style="color: #a6e1d0;">
+            We always have to consider performance
+          </h2>
+        </section>
+
         <section style="text-align: left;" data-background="#0E7388">
           <h1 style="color: #ECD70C;">Thanks!</h1>
           <table>
@@ -916,7 +931,10 @@
             </tr>
           </table>
           <p>
-            <a style="color: #ECD70C;" href="https://twitter.com/elpapapollo">@elpapapollo</a> /
+            <a style="color: #ECD70C;" href="https://twitter.com/elpapapollo">@elpapapollo</a>
+            <br>
+            <span style="color: #ECD70C;">jeremy@pushagency.io</span>
+            <br>
             <a style="color: #ECD70C;" href="https://github.com/jfairbank">github.com/jfairbank</a>
           </p>
         </section>
