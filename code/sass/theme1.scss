@@ -1,0 +1,8 @@
+// theme1.scss
+$palettes: (
+  (bg: red, text: pink)
+  (bg: blue, text: cyan)
+  (bg: green, text: lime)
+);
+
+@import 'ui';

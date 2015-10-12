@@ -1,0 +1,3 @@
+// theme1_dynamic_user_magically.scss
+$palettes: get-dynamic-palettes-from-user-magically();
+@import 'ui';

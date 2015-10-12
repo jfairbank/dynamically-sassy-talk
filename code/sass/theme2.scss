@@ -1,0 +1,8 @@
+// theme2.scss
+$palettes: (
+  (bg: beige, text: gold)
+  (bg: mauve, text: purple)
+  (bg: tan, text: brown)
+);
+
+@import 'ui';
