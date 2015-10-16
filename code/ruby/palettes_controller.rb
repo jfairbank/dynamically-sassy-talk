@@ -4,7 +4,7 @@ class PalettesController < ApplicationController
     @import 'ui';
   SCSS
 
-  def custom_palettes
+  def custom
     @css = Sass::Engine.new(TEMPLATE, {
       syntax: :scss,
       style: :expanded,

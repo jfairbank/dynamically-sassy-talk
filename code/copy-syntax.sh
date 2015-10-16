@@ -45,11 +45,27 @@ fi
 
 EXT="${FILENAME##*.}"
 
-if [[ "$EXT" == "scss" ]]; then
-  SYNTAX=scss
-else
-  SYNTAX=ruby
-fi
+SYNTAX=ruby
+case $EXT in
+  scss)
+    SYNTAX=scss
+    ;;
+  css)
+    SYNTAX=css
+    ;;
+  sh)
+    SYNTAX=sh
+    ;;
+esac
+
+
+#if [[ "$EXT" == "scss" ]]; then
+#  SYNTAX=scss
+#elif [[ "$EXT" == "css" ]]; then
+#  SYNTAX=css
+#else
+#  SYNTAX=ruby
+#fi
 
 #case "$EXT" in
 #  scss)
